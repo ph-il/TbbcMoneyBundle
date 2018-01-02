@@ -1,8 +1,8 @@
 <?php
 
-namespace Tbbc\MoneyBundle\Tests\Pair\Storage;
+namespace Phil\MoneyBundle\Tests\Pair\Storage;
 
-use Tbbc\MoneyBundle\Pair\RatioProvider\StaticRatioProvider;
+use Phil\MoneyBundle\Pair\RatioProvider\StaticRatioProvider;
 
 /**
  * @author Pavel Dubinin <geekdevs@gmail.com>

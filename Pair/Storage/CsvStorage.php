@@ -1,14 +1,14 @@
 <?php
-namespace Tbbc\MoneyBundle\Pair\Storage;
+namespace Phil\MoneyBundle\Pair\Storage;
 
 use Money\Currency;
 use Money\UnknownCurrencyException;
-use Tbbc\MoneyBundle\MoneyException;
-use Tbbc\MoneyBundle\Pair\StorageInterface;
+use Phil\MoneyBundle\MoneyException;
+use Phil\MoneyBundle\Pair\StorageInterface;
 
 /**
  * Class CsvStorage
- * @package Tbbc\MoneyBundle\Pair\Storage
+ * @package Phil\MoneyBundle\Pair\Storage
  * @author Philippe Le Van.
  */
 class CsvStorage implements StorageInterface
@@ -39,7 +39,7 @@ class CsvStorage implements StorageInterface
      *
      * @param bool $force // force reload (no cache)
      *
-     * @throws \Tbbc\MoneyBundle\MoneyException
+     * @throws \Phil\MoneyBundle\MoneyException
      * @return array
      */
     public function loadRatioList($force = false)

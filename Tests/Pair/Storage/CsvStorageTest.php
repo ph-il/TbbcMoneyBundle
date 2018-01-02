@@ -1,11 +1,11 @@
 <?php
-namespace Tbbc\MoneyBundle\Tests\Pair\Storage;
+namespace Phil\MoneyBundle\Tests\Pair\Storage;
 
 use Money\Money;
-use Tbbc\MoneyBundle\MoneyException;
-use Tbbc\MoneyBundle\Pair\PairManager;
-use Tbbc\MoneyBundle\Pair\PairManagerInterface;
-use Tbbc\MoneyBundle\Pair\Storage\CsvStorage;
+use Phil\MoneyBundle\MoneyException;
+use Phil\MoneyBundle\Pair\PairManager;
+use Phil\MoneyBundle\Pair\PairManagerInterface;
+use Phil\MoneyBundle\Pair\Storage\CsvStorage;
 
 /**
  * @group manager
@@ -17,7 +17,7 @@ class CsvStorageTest extends \PHPUnit_Framework_TestCase
     protected $fileName;
     public function setUp()
     {
-        $this->fileName = __DIR__."/../app/data/tbbc_money/pair.csv";
+        $this->fileName = __DIR__."/../app/data/phil_money/pair.csv";
         $dir = dirname($this->fileName);
         exec("rm -rf ".escapeshellarg($dir));
         $this->storage = new CsvStorage($this->fileName, "EUR");

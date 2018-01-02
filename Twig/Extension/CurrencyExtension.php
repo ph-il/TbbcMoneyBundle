@@ -4,9 +4,9 @@
  * Date: 03/07/13
  */
 
-namespace Tbbc\MoneyBundle\Twig\Extension;
+namespace Phil\MoneyBundle\Twig\Extension;
 
-use Tbbc\MoneyBundle\Formatter\MoneyFormatter;
+use Phil\MoneyBundle\Formatter\MoneyFormatter;
 
 /**
  * @author Philippe Le Van <philippe.levan@kitpages.fr>
@@ -45,6 +45,6 @@ class CurrencyExtension extends \Twig_Extension
      */
     public function getName()
     {
-        return 'tbbc_money_currency_extension';
+        return 'phil_money_currency_extension';
     }
 }

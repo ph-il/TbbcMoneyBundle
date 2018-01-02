@@ -1,10 +1,10 @@
 <?php
 
-namespace Tbbc\MoneyBundle\Tests\Twig\Extension;
+namespace Phil\MoneyBundle\Tests\Twig\Extension;
 
 use Money\Currency;
-use Tbbc\MoneyBundle\Formatter\MoneyFormatter;
-use Tbbc\MoneyBundle\Twig\Extension\CurrencyExtension;
+use Phil\MoneyBundle\Formatter\MoneyFormatter;
+use Phil\MoneyBundle\Twig\Extension\CurrencyExtension;
 
 /**
  * @author Benjamin Dulau <benjamin@thebigbrainscompany.com>

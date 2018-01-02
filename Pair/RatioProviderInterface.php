@@ -1,11 +1,11 @@
 <?php
-namespace Tbbc\MoneyBundle\Pair;
+namespace Phil\MoneyBundle\Pair;
 
 /**
  * This interface is used to define the way any ratio provider has to work.
  *
  * After creating a new ratio provider, you have to register it as a service
- * and you can use it by setting the tbbc_money.ratio_provider field in the config.yml file
+ * and you can use it by setting the phil_money.ratio_provider field in the config.yml file
  * @author Philippe Le Van.
  */
 interface RatioProviderInterface

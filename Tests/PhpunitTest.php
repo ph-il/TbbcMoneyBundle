@@ -1,5 +1,5 @@
 <?php
-namespace Tbbc\MoneyBundle\Tests;
+namespace Phil\MoneyBundle\Tests;
 
 class PhpunitTest extends \PHPUnit_Framework_TestCase
 {

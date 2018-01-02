@@ -1,14 +1,14 @@
 <?php
 
-namespace Tbbc\MoneyBundle\Tests\Formatter;
+namespace Phil\MoneyBundle\Tests\Formatter;
 
 use Money\Currency;
 use Money\Money;
-use Tbbc\MoneyBundle\Formatter\MoneyFormatter;
+use Phil\MoneyBundle\Formatter\MoneyFormatter;
 
 /**
  * Class MoneyFormatterTest
- * @package Tbbc\MoneyBundle\Tests\Formatter
+ * @package Phil\MoneyBundle\Tests\Formatter
  * @group formatter
  */
 class MoneyFormatterTest extends \PHPUnit_Framework_TestCase

@@ -1,5 +1,5 @@
 <?php
-namespace Tbbc\MoneyBundle\DependencyInjection\Compiler;
+namespace Phil\MoneyBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -7,7 +7,7 @@ use Symfony\Component\DependencyInjection\Reference;
 
 /**
  * Class RatioProviderCompilerPass
- * @package Tbbc\MoneyBundle\DependencyInjection\Compiler
+ * @package Phil\MoneyBundle\DependencyInjection\Compiler
  */
 class RatioProviderCompilerPass implements CompilerPassInterface
 {
@@ -16,9 +16,9 @@ class RatioProviderCompilerPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        $ratioProviderServiceName = $container->getParameter('tbbc_money.ratio_provider');
+        $ratioProviderServiceName = $container->getParameter('phil_money.ratio_provider');
 
-        $container->getDefinition('tbbc_money.pair_manager')->addMethodCall(
+        $container->getDefinition('phil_money.pair_manager')->addMethodCall(
             'setRatioProvider',
             array(new Reference($ratioProviderServiceName))
         );

@@ -1,14 +1,14 @@
 <?php
-namespace Tbbc\MoneyBundle\Templating\Helper;
+namespace Phil\MoneyBundle\Templating\Helper;
 
 use Money\Money;
 use Symfony\Component\Templating\Helper\Helper;
-use Tbbc\MoneyBundle\Formatter\MoneyFormatter;
-use Tbbc\MoneyBundle\Pair\PairManagerInterface;
+use Phil\MoneyBundle\Formatter\MoneyFormatter;
+use Phil\MoneyBundle\Pair\PairManagerInterface;
 
 /**
  * Class MoneyHelper
- * @package Tbbc\MoneyBundle\Templating\Helper
+ * @package Phil\MoneyBundle\Templating\Helper
  */
 class MoneyHelper extends Helper
 {
@@ -115,6 +115,6 @@ class MoneyHelper extends Helper
      */
     public function getName()
     {
-        return 'tbbc_money_helper';
+        return 'phil_money_helper';
     }
 }

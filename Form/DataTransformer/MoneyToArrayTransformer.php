@@ -1,6 +1,6 @@
 <?php
 
-namespace Tbbc\MoneyBundle\Form\DataTransformer;
+namespace Phil\MoneyBundle\Form\DataTransformer;
 
 use Money\Money;
 use Symfony\Component\Form\DataTransformerInterface;
@@ -45,8 +45,8 @@ class MoneyToArrayTransformer implements DataTransformerInterface
         $amount = $this->sfTransformer->transform($value->getAmount());
 
         return array(
-            'tbbc_amount' => $amount,
-            'tbbc_currency' => $value->getCurrency(),
+            'phil_amount' => $amount,
+            'phil_currency' => $value->getCurrency(),
         );
     }
 
@@ -62,15 +62,15 @@ class MoneyToArrayTransformer implements DataTransformerInterface
         if (!is_array($value)) {
             throw new UnexpectedTypeException($value, 'array');
         }
-        if (!isset($value['tbbc_amount']) || !isset($value['tbbc_currency'])) {
+        if (!isset($value['phil_amount']) || !isset($value['phil_currency'])) {
             return null;
         }
-        $amount = (string) $value['tbbc_amount'];
+        $amount = (string) $value['phil_amount'];
         $amount = str_replace(" ", "", $amount);
         $amount = $this->sfTransformer->reverseTransform($amount);
         $amount = round($amount);
         $amount = (int) $amount;
 
-        return new Money($amount, $value['tbbc_currency']);
+        return new Money($amount, $value['phil_currency']);
     }
 }

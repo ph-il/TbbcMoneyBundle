@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
-        <parameter key="tbbc_money.form_type.money.class">Tbbc\MoneyBundle\Form\Type\MoneyType</parameter>
-        <parameter key="tbbc_money.form_type.currency.class">Tbbc\MoneyBundle\Form\Type\CurrencyType</parameter>
-        <parameter key="tbbc_money.form_type.simple_money.class">Tbbc\MoneyBundle\Form\Type\SimpleMoneyType</parameter>
+        <parameter key="phil_money.form_type.money.class">Phil\MoneyBundle\Form\Type\MoneyType</parameter>
+        <parameter key="phil_money.form_type.currency.class">Phil\MoneyBundle\Form\Type\CurrencyType</parameter>
+        <parameter key="phil_money.form_type.simple_money.class">Phil\MoneyBundle\Form\Type\SimpleMoneyType</parameter>
     </parameters>
 
     <services>
-        <service id="tbbc_money.form_type.currency" class="%tbbc_money.form_type.currency.class%">
-            <argument>%tbbc_money.currencies%</argument>
-            <argument>%tbbc_money.reference_currency%</argument>
-            <tag name="form.type" alias="tbbc_currency" />
+        <service id="phil_money.form_type.currency" class="%phil_money.form_type.currency.class%">
+            <argument>%phil_money.currencies%</argument>
+            <argument>%phil_money.reference_currency%</argument>
+            <tag name="form.type" alias="phil_currency" />
         </service>
-        <service id="tbbc_money.form_type.money" class="%tbbc_money.form_type.money.class%">
-            <argument>%tbbc_money.decimals%</argument>
-            <tag name="form.type" alias="tbbc_money" />
+        <service id="phil_money.form_type.money" class="%phil_money.form_type.money.class%">
+            <argument>%phil_money.decimals%</argument>
+            <tag name="form.type" alias="phil_money" />
         </service>
-        <service id="tbbc_money.form_type.simple_money" class="%tbbc_money.form_type.simple_money.class%">
-            <argument>%tbbc_money.decimals%</argument>
-            <argument>%tbbc_money.currencies%</argument>
-            <argument>%tbbc_money.reference_currency%</argument>
-            <tag name="form.type" alias="tbbc_simple_money" />
+        <service id="phil_money.form_type.simple_money" class="%phil_money.form_type.simple_money.class%">
+            <argument>%phil_money.decimals%</argument>
+            <argument>%phil_money.currencies%</argument>
+            <argument>%phil_money.reference_currency%</argument>
+            <tag name="form.type" alias="phil_simple_money" />
         </service>
     </services>
 </container>

@@ -1,14 +1,14 @@
 <?php
-namespace Tbbc\MoneyBundle\Tests\Config;
+namespace Phil\MoneyBundle\Tests\Config;
 
 use Money\Money;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Console\Input\StringInput;
-use Tbbc\MoneyBundle\Money\MoneyManager;
-use Tbbc\MoneyBundle\Pair\PairManagerInterface;
-use Tbbc\MoneyBundle\Twig\CurrencyExtension;
-use Tbbc\MoneyBundle\Twig\MoneyExtension;
-use Tbbc\MoneyBundle\Type\MoneyType;
+use Phil\MoneyBundle\Money\MoneyManager;
+use Phil\MoneyBundle\Pair\PairManagerInterface;
+use Phil\MoneyBundle\Twig\CurrencyExtension;
+use Phil\MoneyBundle\Twig\MoneyExtension;
+use Phil\MoneyBundle\Type\MoneyType;
 use Doctrine\DBAL\Types\Type;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 
@@ -41,10 +41,10 @@ class ConfigTest
 
     public function testConfigParsing()
     {
-        $currencies = $this->client->getContainer()->getParameter('tbbc_money.currencies');
+        $currencies = $this->client->getContainer()->getParameter('phil_money.currencies');
         $this->assertEquals(array("USD", "EUR", 'CAD'), $currencies);
 
-        $referenceCurrency = $this->client->getContainer()->getParameter('tbbc_money.reference_currency');
+        $referenceCurrency = $this->client->getContainer()->getParameter('phil_money.reference_currency');
         $this->assertEquals("EUR", $referenceCurrency);
     }
 
@@ -52,10 +52,10 @@ class ConfigTest
     {
         \Locale::setDefault('en');
         /** @var PairManagerInterface $pairManager */
-        $pairManager = $this->client->getContainer()->get("tbbc_money.pair_manager");
+        $pairManager = $this->client->getContainer()->get("phil_money.pair_manager");
         $pairManager->saveRatio("USD", 1.25);
         /** @var MoneyExtension $moneyExtension */
-        $moneyExtension = $this->client->getContainer()->get("tbbc_money.twig.money");
+        $moneyExtension = $this->client->getContainer()->get("phil_money.twig.money");
         $eur = Money::EUR(100);
         $usd = $moneyExtension->convert($eur, "USD");
         $this->assertEquals(Money::USD(125), $usd);
@@ -64,7 +64,7 @@ class ConfigTest
     public function testMoneyManager()
     {
         /** @var MoneyManager $moneyManager */
-        $moneyManager = $this->client->getContainer()->get("tbbc_money.money_manager");
+        $moneyManager = $this->client->getContainer()->get("phil_money.money_manager");
         $money = $moneyManager->createMoneyFromFloat('2.5', 'USD');
         $this->assertEquals("USD", $money->getCurrency()->getCode());
         $this->assertEquals(2500, $money->getAmount()); // note : 3 decimals in config for theses tests
@@ -74,7 +74,7 @@ class ConfigTest
     {
         \Locale::setDefault('en');
         /** @var PairManagerInterface $pairManager */
-        $pairManager = $this->client->getContainer()->get("tbbc_money.pair_manager");
+        $pairManager = $this->client->getContainer()->get("phil_money.pair_manager");
         $pairManager->saveRatio("USD", 1.25);
         sleep(1);
         $between = new \DateTime();
@@ -83,7 +83,7 @@ class ConfigTest
         $now = new \DateTime();
         $before = clone($now);
         $before->sub(new \DateInterval('P1D'));
-        $pairHistoryManager = $this->client->getContainer()->get("tbbc_money.pair_history_manager");
+        $pairHistoryManager = $this->client->getContainer()->get("phil_money.pair_history_manager");
         $ratio = $pairHistoryManager->getRatioAtDate('USD', $between);
         $this->assertEquals(1.25, $ratio);
         $ratio = $pairHistoryManager->getRatioAtDate('USD', $now);
@@ -93,7 +93,7 @@ class ConfigTest
 
 
         $em = $this->client->getContainer()->get("doctrine.orm.entity_manager");
-        $repo = $em->getRepository('\Tbbc\MoneyBundle\Entity\RatioHistory');
+        $repo = $em->getRepository('\Phil\MoneyBundle\Entity\RatioHistory');
         $list = $repo->findAll();
         $this->assertEquals(2, count($list));
 
@@ -101,9 +101,9 @@ class ConfigTest
 
     public function testHistoryOfFetchedRatio()
     {
-        $this->runCommand('tbbc:money:ratio-fetch');
+        $this->runCommand('phil:money:ratio-fetch');
         $em = $this->client->getContainer()->get("doctrine.orm.entity_manager");
-        $repo = $em->getRepository('\Tbbc\MoneyBundle\Entity\RatioHistory');
+        $repo = $em->getRepository('\Phil\MoneyBundle\Entity\RatioHistory');
         $list = $repo->findAll();
 
         $this->assertEquals(2, count($list));
@@ -113,6 +113,6 @@ class ConfigTest
     {
         \Locale::setDefault('en');
         /** @var CurrencyExtension $currencyExtension */
-        $currencyExtension = $this->client->getContainer()->get("tbbc_money.twig.currency");
+        $currencyExtension = $this->client->getContainer()->get("phil_money.twig.currency");
     }
 }

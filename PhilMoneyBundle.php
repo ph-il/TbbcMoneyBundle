@@ -1,18 +1,18 @@
 <?php
-namespace Tbbc\MoneyBundle;
+namespace Phil\MoneyBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Tbbc\MoneyBundle\DependencyInjection\Compiler\PairHistoryCompilerPass;
-use Tbbc\MoneyBundle\DependencyInjection\Compiler\RatioProviderCompilerPass;
-use Tbbc\MoneyBundle\DependencyInjection\Compiler\StorageCompilerPass;
-use Tbbc\MoneyBundle\DependencyInjection\Compiler\DoctrineTypeCompilerPass;
+use Phil\MoneyBundle\DependencyInjection\Compiler\PairHistoryCompilerPass;
+use Phil\MoneyBundle\DependencyInjection\Compiler\RatioProviderCompilerPass;
+use Phil\MoneyBundle\DependencyInjection\Compiler\StorageCompilerPass;
+use Phil\MoneyBundle\DependencyInjection\Compiler\DoctrineTypeCompilerPass;
 
 /**
- * Class TbbcMoneyBundle
- * @package Tbbc\MoneyBundle
+ * Class PhilMoneyBundle
+ * @package Phil\MoneyBundle
  */
-class TbbcMoneyBundle extends Bundle
+class PhilMoneyBundle extends Bundle
 {
     /**
      * @param ContainerBuilder $container

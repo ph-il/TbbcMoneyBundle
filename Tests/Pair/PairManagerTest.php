@@ -1,11 +1,11 @@
 <?php
-namespace Tbbc\MoneyBundle\Tests\Pair;
+namespace Phil\MoneyBundle\Tests\Pair;
 
 use Money\Money;
-use Tbbc\MoneyBundle\MoneyException;
-use Tbbc\MoneyBundle\Pair\PairManager;
-use Tbbc\MoneyBundle\Pair\RatioProvider\StaticRatioProvider;
-use Tbbc\MoneyBundle\Pair\Storage\CsvStorage;
+use Phil\MoneyBundle\MoneyException;
+use Phil\MoneyBundle\Pair\PairManager;
+use Phil\MoneyBundle\Pair\RatioProvider\StaticRatioProvider;
+use Phil\MoneyBundle\Pair\Storage\CsvStorage;
 
 /**
  * @group manager
@@ -17,7 +17,7 @@ class PairManagerTest extends \PHPUnit_Framework_TestCase
     protected $fileName;
     public function setUp()
     {
-        $this->fileName = __DIR__."/../app/data/tbbc_money/pair.csv";
+        $this->fileName = __DIR__."/../app/data/phil_money/pair.csv";
         $dir = dirname($this->fileName);
         exec("rm -rf ".escapeshellarg($dir));
         $storage = new CsvStorage($this->fileName, "EUR");
@@ -89,14 +89,14 @@ class PairManagerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Tbbc\MoneyBundle\MoneyException
+     * @expectedException \Phil\MoneyBundle\MoneyException
      */
     public function testRatioExceptions()
     {
         $this->manager->saveRatio("USD", -2.3);
     }
     /**
-     * @expectedException \Tbbc\MoneyBundle\MoneyException
+     * @expectedException \Phil\MoneyBundle\MoneyException
      */
     public function testCurrencyWithoutRatio()
     {
@@ -127,7 +127,7 @@ class PairManagerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Tbbc\MoneyBundle\MoneyException
+     * @expectedException \Phil\MoneyBundle\MoneyException
      */
     public function testNoRatioProvider()
     {

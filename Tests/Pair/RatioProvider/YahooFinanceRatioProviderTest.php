@@ -1,9 +1,9 @@
 <?php
 
-namespace Tbbc\MoneyBundle\Tests\Pair\Storage;
+namespace Phil\MoneyBundle\Tests\Pair\Storage;
 
 use Money\Currency;
-use Tbbc\MoneyBundle\Pair\RatioProvider\YahooFinanceRatioProvider;
+use Phil\MoneyBundle\Pair\RatioProvider\YahooFinanceRatioProvider;
 
 /**
  * @author Hugues Maignol <hugues.maignol@kitpages.fr>
@@ -13,7 +13,7 @@ class YahooFinanceRatioProviderTest extends \PHPUnit_Framework_TestCase
 {
     public function testRatioFetchingEUR_USD()
     {
-        $providerMock = $this->getMockBuilder('Tbbc\MoneyBundle\Pair\RatioProvider\YahooFinanceRatioProvider')
+        $providerMock = $this->getMockBuilder('Phil\MoneyBundle\Pair\RatioProvider\YahooFinanceRatioProvider')
             ->setMethods(array('getEndpoint', 'executeQuery'))
             ->getMock();
 
@@ -32,7 +32,7 @@ class YahooFinanceRatioProviderTest extends \PHPUnit_Framework_TestCase
 
     public function testRatioFetchingGBP_EUR()
     {
-        $providerMock = $this->getMockBuilder('Tbbc\MoneyBundle\Pair\RatioProvider\YahooFinanceRatioProvider')
+        $providerMock = $this->getMockBuilder('Phil\MoneyBundle\Pair\RatioProvider\YahooFinanceRatioProvider')
             ->setMethods(array('getEndpoint', 'executeQuery'))
             ->getMock();
 
@@ -53,7 +53,7 @@ class YahooFinanceRatioProviderTest extends \PHPUnit_Framework_TestCase
     {
         $ratioProvider = new YahooFinanceRatioProvider();
 
-        $this->setExpectedException('Tbbc\MoneyBundle\MoneyException');
+        $this->setExpectedException('Phil\MoneyBundle\MoneyException');
         $ratioProvider->fetchRatio('ZZZ', 'USD');
     }
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace Tbbc\MoneyBundle\Tests\Twig\Extension;
+namespace Phil\MoneyBundle\Tests\Twig\Extension;
 
 use Money\Currency;
 use Money\Money;
-use Tbbc\MoneyBundle\Formatter\MoneyFormatter;
-use Tbbc\MoneyBundle\Twig\Extension\MoneyExtension;
+use Phil\MoneyBundle\Formatter\MoneyFormatter;
+use Phil\MoneyBundle\Twig\Extension\MoneyExtension;
 
 /**
  * @author Benjamin Dulau <benjamin@thebigbrainscompany.com>
@@ -25,7 +25,7 @@ class MoneyExtensionTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         \Locale::setDefault("fr_FR");
-        $pairManager = $this->getMockBuilder('Tbbc\MoneyBundle\Pair\PairManager')
+        $pairManager = $this->getMockBuilder('Phil\MoneyBundle\Pair\PairManager')
             ->disableOriginalConstructor()
             ->getMock();
         $pairManager->expects($this->any())

@@ -1,9 +1,9 @@
 <?php
-namespace Tbbc\MoneyBundle\Tests\Money;
+namespace Phil\MoneyBundle\Tests\Money;
 
 use Money\Money;
-use Tbbc\MoneyBundle\Money\MoneyManager;
-use Tbbc\MoneyBundle\MoneyException;
+use Phil\MoneyBundle\Money\MoneyManager;
+use Phil\MoneyBundle\MoneyException;
 
 /**
  * @group moneymanager

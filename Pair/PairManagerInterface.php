@@ -1,11 +1,11 @@
 <?php
-namespace Tbbc\MoneyBundle\Pair;
+namespace Phil\MoneyBundle\Pair;
 
 use Money\Money;
 
 /**
  * Interface PairManagerInterface
- * @package Tbbc\MoneyBundle\Pair
+ * @package Phil\MoneyBundle\Pair
  */
 interface PairManagerInterface
 {
@@ -22,7 +22,7 @@ interface PairManagerInterface
     /**
      * set ratio between the currency in parameter and the reference currency.
      *
-     * WARNING: This method has to dispatch a \TbbcMoneyEvents::AFTER_RATIO_SAVE event
+     * WARNING: This method has to dispatch a \PhilMoneyEvents::AFTER_RATIO_SAVE event
      * with a SaveRatioEvent
      *
      * @param string $currencyCode from the list of currencies

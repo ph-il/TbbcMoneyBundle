@@ -5,55 +5,55 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="tbbc_money.pair_manager.class">Tbbc\MoneyBundle\Pair\PairManager</parameter>
-        <parameter key="tbbc_money.money_manager.class">Tbbc\MoneyBundle\Money\MoneyManager</parameter>
-        <parameter key="tbbc_money.pair_history_manager.class">Tbbc\MoneyBundle\PairHistory\PairHistoryManager</parameter>
-        <parameter key="tbbc_money.pair.csv_storage.class">Tbbc\MoneyBundle\Pair\Storage\CsvStorage</parameter>
-        <parameter key="tbbc_money.pair_manager.ratio_file_name">%kernel.root_dir%/data/tbbc_money/ratio_file_name.csv</parameter>
-        <parameter key="tbbc_money.ratio_provider.yahoo_finance.class">Tbbc\MoneyBundle\Pair\RatioProvider\YahooFinanceRatioProvider</parameter>
-        <parameter key="tbbc_money.ratio_provider.google.class">Tbbc\MoneyBundle\Pair\RatioProvider\GoogleRatioProvider</parameter>
-        <parameter key="tbbc_money.formatter.money_formatter.class">Tbbc\MoneyBundle\Formatter\MoneyFormatter</parameter>
+        <parameter key="phil_money.pair_manager.class">Phil\MoneyBundle\Pair\PairManager</parameter>
+        <parameter key="phil_money.money_manager.class">Phil\MoneyBundle\Money\MoneyManager</parameter>
+        <parameter key="phil_money.pair_history_manager.class">Phil\MoneyBundle\PairHistory\PairHistoryManager</parameter>
+        <parameter key="phil_money.pair.csv_storage.class">Phil\MoneyBundle\Pair\Storage\CsvStorage</parameter>
+        <parameter key="phil_money.pair_manager.ratio_file_name">%kernel.root_dir%/data/phil_money/ratio_file_name.csv</parameter>
+        <parameter key="phil_money.ratio_provider.yahoo_finance.class">Phil\MoneyBundle\Pair\RatioProvider\YahooFinanceRatioProvider</parameter>
+        <parameter key="phil_money.ratio_provider.google.class">Phil\MoneyBundle\Pair\RatioProvider\GoogleRatioProvider</parameter>
+        <parameter key="phil_money.formatter.money_formatter.class">Phil\MoneyBundle\Formatter\MoneyFormatter</parameter>
 
-        <parameter key="tbbc_money.command.ratio_fetch.class">Tbbc\MoneyBundle\Command\RatioFetchCommand</parameter>
-        <parameter key="tbbc_money.command.ratio_list.class">Tbbc\MoneyBundle\Command\RatioListCommand</parameter>
-        <parameter key="tbbc_money.command.ratio_save.class">Tbbc\MoneyBundle\Command\RatioSaveCommand</parameter>
+        <parameter key="phil_money.command.ratio_fetch.class">Phil\MoneyBundle\Command\RatioFetchCommand</parameter>
+        <parameter key="phil_money.command.ratio_list.class">Phil\MoneyBundle\Command\RatioListCommand</parameter>
+        <parameter key="phil_money.command.ratio_save.class">Phil\MoneyBundle\Command\RatioSaveCommand</parameter>
     </parameters>
 
     <services>
-        <service id="tbbc_money.pair_manager" class="%tbbc_money.pair_manager.class%" public="true">
-            <argument type="service" id="tbbc_money.pair.csv_storage"/>
-            <argument>%tbbc_money.currencies%</argument>
-            <argument>%tbbc_money.reference_currency%</argument>
+        <service id="phil_money.pair_manager" class="%phil_money.pair_manager.class%" public="true">
+            <argument type="service" id="phil_money.pair.csv_storage"/>
+            <argument>%phil_money.currencies%</argument>
+            <argument>%phil_money.reference_currency%</argument>
             <argument type="service" id="event_dispatcher"/>
         </service>
-        <service id="tbbc_money.money_manager" class="%tbbc_money.money_manager.class%" public="true">
-            <argument>%tbbc_money.reference_currency%</argument>
-            <argument>%tbbc_money.decimals%</argument>
+        <service id="phil_money.money_manager" class="%phil_money.money_manager.class%" public="true">
+            <argument>%phil_money.reference_currency%</argument>
+            <argument>%phil_money.decimals%</argument>
         </service>
         <!-- Storage -->
-        <service id="tbbc_money.pair.csv_storage" class="%tbbc_money.pair.csv_storage.class%">
-            <argument>%tbbc_money.pair_manager.ratio_file_name%</argument>
-            <argument>%tbbc_money.reference_currency%</argument>
+        <service id="phil_money.pair.csv_storage" class="%phil_money.pair.csv_storage.class%">
+            <argument>%phil_money.pair_manager.ratio_file_name%</argument>
+            <argument>%phil_money.reference_currency%</argument>
         </service>
         <!-- Ratio providers -->
-        <service id="tbbc_money.ratio_provider.yahoo_finance" class="%tbbc_money.ratio_provider.yahoo_finance.class%">
+        <service id="phil_money.ratio_provider.yahoo_finance" class="%phil_money.ratio_provider.yahoo_finance.class%">
         </service>
-        <service id="tbbc_money.ratio_provider.google" class="%tbbc_money.ratio_provider.google.class%">
+        <service id="phil_money.ratio_provider.google" class="%phil_money.ratio_provider.google.class%">
         </service>
         <!-- Formatter -->
-        <service id="tbbc_money.formatter.money_formatter" class="%tbbc_money.formatter.money_formatter.class%">
-            <argument>%tbbc_money.decimals%</argument>
+        <service id="phil_money.formatter.money_formatter" class="%phil_money.formatter.money_formatter.class%">
+            <argument>%phil_money.decimals%</argument>
         </service>
 
         <!-- Commands -->
-        <service id="tbbc_money.command.ratio_fetch" class="%tbbc_money.command.ratio_fetch.class%">
-            <tag name="console.command" command="tbbc:money:ratio-fetch" />
+        <service id="phil_money.command.ratio_fetch" class="%phil_money.command.ratio_fetch.class%">
+            <tag name="console.command" command="phil:money:ratio-fetch" />
         </service>
-        <service id="tbbc_money.command.ratio_list" class="%tbbc_money.command.ratio_list.class%">
-            <tag name="console.command" command="tbbc:money:ratio-list" />
+        <service id="phil_money.command.ratio_list" class="%phil_money.command.ratio_list.class%">
+            <tag name="console.command" command="phil:money:ratio-list" />
         </service>
-        <service id="tbbc_money.command.ratio_save" class="%tbbc_money.command.ratio_save.class%">
-            <tag name="console.command" command="tbbc:money:ratio-save" />
+        <service id="phil_money.command.ratio_save" class="%phil_money.command.ratio_save.class%">
+            <tag name="console.command" command="phil:money:ratio-save" />
         </service>
     </services>
 

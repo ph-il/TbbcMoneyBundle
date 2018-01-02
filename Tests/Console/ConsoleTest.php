@@ -1,8 +1,8 @@
 <?php
-namespace Tbbc\MoneyBundle\Tests\Console;
+namespace Phil\MoneyBundle\Tests\Console;
 
-use Tbbc\MoneyBundle\Pair\PairManagerInterface;
-use Tbbc\MoneyBundle\Tests\TestUtil\CommandTestCase;
+use Phil\MoneyBundle\Pair\PairManagerInterface;
+use Phil\MoneyBundle\Tests\TestUtil\CommandTestCase;
 
 /**
  * @group functionnal
@@ -27,19 +27,19 @@ class ConsoleTest
         $client = $this->client;
 
 
-        $output = $this->runCommand($client, "tbbc:money:ratio-save USD 1.265");
+        $output = $this->runCommand($client, "phil:money:ratio-save USD 1.265");
 
         /** @var PairManagerInterface $pairManager */
-        $pairManager = $client->getContainer()->get("tbbc_money.pair_manager");
+        $pairManager = $client->getContainer()->get("phil_money.pair_manager");
         $this->assertEquals(1.265, $pairManager->getRelativeRatio("EUR", "USD"));
     }
     public function testRunRatioList()
     {
         $client = $this->client;
-        $output = $this->runCommand($client, "tbbc:money:ratio-save USD 1.265");
-        $output = $this->runCommand($client, "tbbc:money:ratio-save CAD 1.1");
+        $output = $this->runCommand($client, "phil:money:ratio-save USD 1.265");
+        $output = $this->runCommand($client, "phil:money:ratio-save CAD 1.1");
 
-        $output = $this->runCommand($client, "tbbc:money:ratio-list");
+        $output = $this->runCommand($client, "phil:money:ratio-list");
 
         $this->assertEquals("Ratio list\nEUR;1\nUSD;1.265\nCAD;1.1\n\n", $output);
     }
@@ -47,10 +47,10 @@ class ConsoleTest
     public function testRunRatioFetch()
     {
         $client = $this->client;
-        $output = $this->runCommand($client, "tbbc:money:ratio-fetch");
+        $output = $this->runCommand($client, "phil:money:ratio-fetch");
         $this->assertNotContains("ERR", $output);
 
-        $output = $this->runCommand($client, "tbbc:money:ratio-list");
+        $output = $this->runCommand($client, "phil:money:ratio-list");
 
         $this->assertRegExp("/^Ratio list\nEUR;1\nUSD;\d.\d+\nCAD;\d.\d+\n\n$/", $output);
     }

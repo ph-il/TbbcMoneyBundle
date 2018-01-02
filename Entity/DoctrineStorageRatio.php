@@ -1,9 +1,9 @@
 <?php
-namespace Tbbc\MoneyBundle\Entity;
+namespace Phil\MoneyBundle\Entity;
 
 /**
  * Class DoctrineStorageRatio
- * @package Tbbc\MoneyBundle\Entity
+ * @package Phil\MoneyBundle\Entity
  */
 class DoctrineStorageRatio
 {

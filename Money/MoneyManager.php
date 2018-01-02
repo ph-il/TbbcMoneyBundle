@@ -1,12 +1,12 @@
 <?php
-namespace Tbbc\MoneyBundle\Money;
+namespace Phil\MoneyBundle\Money;
 
 use Money\Currency;
 use Money\Money;
 
 /**
  * Class MoneyManager
- * @package Tbbc\MoneyBundle\Money
+ * @package Phil\MoneyBundle\Money
  * @author levan
  */
 class MoneyManager implements MoneyManagerInterface

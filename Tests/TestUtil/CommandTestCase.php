@@ -1,6 +1,6 @@
 <?php
 
-namespace Tbbc\MoneyBundle\Tests\TestUtil;
+namespace Phil\MoneyBundle\Tests\TestUtil;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Bundle\FrameworkBundle\Console\Application;

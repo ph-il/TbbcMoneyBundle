@@ -1,5 +1,5 @@
 <?php
-namespace Tbbc\MoneyBundle\Pair;
+namespace Phil\MoneyBundle\Pair;
 
 use Money\Converter;
 use Money\Currencies;
@@ -9,12 +9,12 @@ use Money\CurrencyPair;
 use Money\Exchange;
 use Money\Money;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Tbbc\MoneyBundle\MoneyException;
-use Tbbc\MoneyBundle\TbbcMoneyEvents;
+use Phil\MoneyBundle\MoneyException;
+use Phil\MoneyBundle\PhilMoneyEvents;
 
 /**
  * Class PairManager
- * @package Tbbc\MoneyBundle\Pair
+ * @package Phil\MoneyBundle\Pair
  * @author Philippe Le Van.
  */
 class PairManager implements PairManagerInterface, Exchange
@@ -103,7 +103,7 @@ class PairManager implements PairManagerInterface, Exchange
             $ratio,
             $savedAt
         );
-        $this->dispatcher->dispatch(TbbcMoneyEvents::AFTER_RATIO_SAVE, $event);
+        $this->dispatcher->dispatch(PhilMoneyEvents::AFTER_RATIO_SAVE, $event);
     }
 
     /**

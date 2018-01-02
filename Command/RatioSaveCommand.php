@@ -1,16 +1,16 @@
 <?php
-namespace Tbbc\MoneyBundle\Command;
+namespace Phil\MoneyBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Tbbc\MoneyBundle\MoneyException;
-use Tbbc\MoneyBundle\Pair\PairManagerInterface;
+use Phil\MoneyBundle\MoneyException;
+use Phil\MoneyBundle\Pair\PairManagerInterface;
 
 /**
  * Class RatioSaveCommand
- * @package Tbbc\MoneyBundle\Command
+ * @package Phil\MoneyBundle\Command
  */
 class RatioSaveCommand extends ContainerAwareCommand
 {
@@ -20,8 +20,8 @@ class RatioSaveCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('tbbc:money:ratio-save')
-            ->setHelp('The <info>tbbc:money:ratio-save</info> save a currency ratio')
+            ->setName('phil:money:ratio-save')
+            ->setHelp('The <info>phil:money:ratio-save</info> save a currency ratio')
             ->setDescription('save a currency ratio')
             ->addArgument(
                 'currencyCode',
@@ -48,7 +48,7 @@ class RatioSaveCommand extends ContainerAwareCommand
         $ratio = (float) $input->getArgument('ratio');
 
         /** @var PairManagerInterface $pairManager */
-        $pairManager = $this->getContainer()->get('tbbc_money.pair_manager');
+        $pairManager = $this->getContainer()->get('phil_money.pair_manager');
         try {
             $pairManager->saveRatio($currencyCode, $ratio);
             $output->writeln('ratio saved');

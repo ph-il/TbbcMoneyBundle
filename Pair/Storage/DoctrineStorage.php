@@ -1,13 +1,13 @@
 <?php
-namespace Tbbc\MoneyBundle\Pair\Storage;
+namespace Phil\MoneyBundle\Pair\Storage;
 
-use Tbbc\MoneyBundle\Entity\DoctrineStorageRatio;
-use Tbbc\MoneyBundle\Pair\StorageInterface;
+use Phil\MoneyBundle\Entity\DoctrineStorageRatio;
+use Phil\MoneyBundle\Pair\StorageInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 /**
  * Class DoctrineStorage
- * @package Tbbc\MoneyBundle\Pair\Storage
+ * @package Phil\MoneyBundle\Pair\Storage
  * @author Philippe Le Van.
  */
 class DoctrineStorage implements StorageInterface
@@ -39,7 +39,7 @@ class DoctrineStorage implements StorageInterface
      * @param  bool $force // force reload (no cache)
      * @return array
      *
-     * @throws \Tbbc\MoneyBundle\MoneyException
+     * @throws \Phil\MoneyBundle\MoneyException
      */
     public function loadRatioList($force = false)
     {
@@ -47,7 +47,7 @@ class DoctrineStorage implements StorageInterface
             return $this->ratioList;
         }
 
-        $repository = $this->objectManager->getRepository('Tbbc\MoneyBundle\Entity\DoctrineStorageRatio');
+        $repository = $this->objectManager->getRepository('Phil\MoneyBundle\Entity\DoctrineStorageRatio');
         $doctrineStorageRatios = $repository->findAll();
 
         // FIXME
@@ -73,7 +73,7 @@ class DoctrineStorage implements StorageInterface
      */
     public function saveRatioList($ratioList)
     {
-        $doctrineStorageRatios = $this->objectManager->getRepository('Tbbc\MoneyBundle\Entity\DoctrineStorageRatio')->findAll();
+        $doctrineStorageRatios = $this->objectManager->getRepository('Phil\MoneyBundle\Entity\DoctrineStorageRatio')->findAll();
 
         foreach ($doctrineStorageRatios as $doctrineStorageRatio) {
             $this->objectManager->remove($doctrineStorageRatio);

@@ -1,9 +1,9 @@
 <?php
 
-namespace Tbbc\MoneyBundle\Form\DataTransformer;
+namespace Phil\MoneyBundle\Form\DataTransformer;
 
 use Money\Currency;
-use Tbbc\MoneyBundle\Pair\PairManagerInterface;
+use Phil\MoneyBundle\Pair\PairManagerInterface;
 
 /**
  * Transforms between a Money instance and an array.
@@ -31,7 +31,7 @@ class SimpleMoneyToArrayTransformer extends MoneyToArrayTransformer
         if (!$tab) {
             return null;
         }
-        unset($tab["tbbc_currency"]);
+        unset($tab["phil_currency"]);
 
         return $tab;
     }
@@ -42,7 +42,7 @@ class SimpleMoneyToArrayTransformer extends MoneyToArrayTransformer
     public function reverseTransform($value)
     {
         if (is_array($value)) {
-            $value["tbbc_currency"] = new Currency($this->currency);
+            $value["phil_currency"] = new Currency($this->currency);
         }
 
         return parent::reverseTransform($value);

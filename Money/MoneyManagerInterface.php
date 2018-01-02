@@ -1,11 +1,11 @@
 <?php
-namespace Tbbc\MoneyBundle\Money;
+namespace Phil\MoneyBundle\Money;
 
 use Money\Money;
 
 /**
  * Interface MoneyManagerInterface
- * @package Tbbc\MoneyBundle\Money
+ * @package Phil\MoneyBundle\Money
  */
 interface MoneyManagerInterface
 {

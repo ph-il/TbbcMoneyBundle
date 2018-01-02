@@ -1,11 +1,11 @@
 <?php
 
-namespace Tbbc\MoneyBundle\Form\Type;
+namespace Phil\MoneyBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Tbbc\MoneyBundle\Form\DataTransformer\MoneyToArrayTransformer;
+use Phil\MoneyBundle\Form\DataTransformer\MoneyToArrayTransformer;
 
 /**
  * Form type for the Money object.
@@ -31,8 +31,8 @@ class MoneyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('tbbc_amount', 'Symfony\Component\Form\Extension\Core\Type\TextType')
-            ->add('tbbc_currency', $options['currency_type'])
+            ->add('phil_amount', 'Symfony\Component\Form\Extension\Core\Type\TextType')
+            ->add('phil_currency', $options['currency_type'])
             ->addModelTransformer(
                 new MoneyToArrayTransformer($this->decimals)
             );
@@ -46,13 +46,13 @@ class MoneyType extends AbstractType
         $resolver
             ->setDefaults(array(
                 'data_class' => null,
-                'currency_type' => 'Tbbc\MoneyBundle\Form\Type\CurrencyType',
+                'currency_type' => 'Phil\MoneyBundle\Form\Type\CurrencyType',
             ))
             ->setAllowedTypes(
                 'currency_type',
                 array(
                     'string',
-                    'Tbbc\MoneyBundle\Form\Type\CurrencyType',
+                    'Phil\MoneyBundle\Form\Type\CurrencyType',
                 )
             )
         ;
@@ -63,6 +63,6 @@ class MoneyType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'tbbc_money';
+        return 'phil_money';
     }
 }

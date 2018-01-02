@@ -1,9 +1,9 @@
 <?php
-namespace Tbbc\MoneyBundle\Tests\Pair\Storage;
+namespace Phil\MoneyBundle\Tests\Pair\Storage;
 
-use Tbbc\MoneyBundle\Tests\BundleOrmTestCase;
-use Tbbc\MoneyBundle\Pair\Storage\DoctrineStorage;
-use Tbbc\MoneyBundle\Entity\DoctrineStorageRatio;
+use Phil\MoneyBundle\Tests\BundleOrmTestCase;
+use Phil\MoneyBundle\Pair\Storage\DoctrineStorage;
+use Phil\MoneyBundle\Entity\DoctrineStorageRatio;
 
 /**
  * @group manager
@@ -11,7 +11,7 @@ use Tbbc\MoneyBundle\Entity\DoctrineStorageRatio;
 class DoctrineStorageTest extends BundleOrmTestCase
 {
     /**
-     * @var \Tbbc\MoneyBundle\Pair\Storage\DoctrineStorage
+     * @var \Phil\MoneyBundle\Pair\Storage\DoctrineStorage
      */
     protected $doctrineStorage;
 
@@ -53,7 +53,7 @@ class DoctrineStorageTest extends BundleOrmTestCase
     public function testSave ()
     {
         $em = $this->getEntityManager();
-        $repository = $em->getRepository('Tbbc\MoneyBundle\Entity\DoctrineStorageRatio');
+        $repository = $em->getRepository('Phil\MoneyBundle\Entity\DoctrineStorageRatio');
 
         $this->doctrineStorage->saveRatioList(array (
             'EUR' => 1,

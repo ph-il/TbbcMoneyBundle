@@ -1,14 +1,14 @@
 <?php
-namespace Tbbc\MoneyBundle\Pair\RatioProvider;
+namespace Phil\MoneyBundle\Pair\RatioProvider;
 
-use Tbbc\MoneyBundle\MoneyException;
-use Tbbc\MoneyBundle\Pair\RatioProviderInterface;
+use Phil\MoneyBundle\MoneyException;
+use Phil\MoneyBundle\Pair\RatioProviderInterface;
 
 /**
  * Static ratio provider
  *
  * @author Pavel Dubinin <geekdevs@gmail.com>
- * @package Tbbc\MoneyBundle\Pair\RatioProvider
+ * @package Phil\MoneyBundle\Pair\RatioProvider
  */
 class StaticRatioProvider implements RatioProviderInterface
 {

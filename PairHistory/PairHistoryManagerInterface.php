@@ -1,11 +1,11 @@
 <?php
-namespace Tbbc\MoneyBundle\PairHistory;
+namespace Phil\MoneyBundle\PairHistory;
 
-use Tbbc\MoneyBundle\Pair\SaveRatioEvent;
+use Phil\MoneyBundle\Pair\SaveRatioEvent;
 
 /**
  * Interface PairHistoryManagerInterface
- * @package Tbbc\MoneyBundle\PairHistory
+ * @package Phil\MoneyBundle\PairHistory
  */
 interface PairHistoryManagerInterface
 {

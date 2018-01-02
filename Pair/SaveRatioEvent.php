@@ -1,11 +1,11 @@
 <?php
-namespace Tbbc\MoneyBundle\Pair;
+namespace Phil\MoneyBundle\Pair;
 
 use Symfony\Component\EventDispatcher\Event;
 
 /**
  * Class SaveRatioEvent
- * @package Tbbc\MoneyBundle\Pair
+ * @package Phil\MoneyBundle\Pair
  */
 class SaveRatioEvent extends Event
 {

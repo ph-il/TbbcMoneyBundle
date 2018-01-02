@@ -1,6 +1,6 @@
 <?php
 
-namespace Tbbc\MoneyBundle\DependencyInjection;
+namespace Phil\MoneyBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -19,16 +19,16 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('tbbc_money');
+        $rootNode = $treeBuilder->root('phil_money');
         $this->addCurrencySection($rootNode);
 
         return $treeBuilder;
     }
 
     /**
-     * Parses the tbbc_money config section
+     * Parses the phil_money config section
      * Example for yaml driver:
-     * tbbc_money:
+     * phil_money:
      *     currencies: ["USD", "EUR"]
      *     reference_currency: "EUR"
      *
@@ -65,7 +65,7 @@ class Configuration implements ConfigurationInterface
                 ->end()
                 ->scalarNode('ratio_provider')
                     ->cannotBeEmpty()
-                    ->defaultValue('tbbc_money.ratio_provider.yahoo_finance')
+                    ->defaultValue('phil_money.ratio_provider.yahoo_finance')
                 ->end()
                 ->arrayNode('templating')
                     ->addDefaultsIfNotSet()

@@ -1,8 +1,8 @@
 <?php
 
-namespace Tbbc\MoneyBundle\Tests\Pair\Storage;
+namespace Phil\MoneyBundle\Tests\Pair\Storage;
 
-use Tbbc\MoneyBundle\Pair\RatioProvider\GoogleRatioProvider;
+use Phil\MoneyBundle\Pair\RatioProvider\GoogleRatioProvider;
 
 /**
  * @author Hugues Maignol <hugues.maignol@kitpages.fr>

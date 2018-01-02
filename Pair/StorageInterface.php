@@ -1,9 +1,9 @@
 <?php
-namespace Tbbc\MoneyBundle\Pair;
+namespace Phil\MoneyBundle\Pair;
 
 /**
  * Interface StorageInterface
- * @package Tbbc\MoneyBundle\Pair
+ * @package Phil\MoneyBundle\Pair
  * @author Philippe Le Van.
  */
 interface StorageInterface

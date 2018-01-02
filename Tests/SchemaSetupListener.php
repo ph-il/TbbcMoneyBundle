@@ -1,6 +1,6 @@
 <?php
 
-namespace Tbbc\MoneyBundle\Tests;
+namespace Phil\MoneyBundle\Tests;
 
 use DoctrineExtensions\PHPUnit\Event\EntityManagerEventArgs;
 use Doctrine\ORM\Tools\SchemaTool;

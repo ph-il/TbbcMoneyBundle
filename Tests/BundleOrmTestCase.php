@@ -1,7 +1,7 @@
 <?php
-namespace Tbbc\MoneyBundle\Tests;
+namespace Phil\MoneyBundle\Tests;
 
-use Tbbc\MoneyBundle\Tests\SchemaSetupListener;
+use Phil\MoneyBundle\Tests\SchemaSetupListener;
 
 use Doctrine\Common\EventManager;
 use Doctrine\Common\Cache\ArrayCache;
@@ -24,7 +24,7 @@ class BundleOrmTestCase
         $eventManager->addEventListener(array("preTestSetUp"), new SchemaSetupListener());
         
         $driver = new SimplifiedXmlDriver(array(
-            __DIR__ . '/../Resources/config/doctrine/ratios' => 'Tbbc\MoneyBundle\Entity'
+            __DIR__ . '/../Resources/config/doctrine/ratios' => 'Phil\MoneyBundle\Entity'
         ));
 
         // create config object
@@ -32,7 +32,7 @@ class BundleOrmTestCase
         $config->setMetadataCacheImpl(new ArrayCache());
         $config->setMetadataDriverImpl($driver);
         $config->setProxyDir(__DIR__ . '/TestProxies');
-        $config->setProxyNamespace('Tbbc\MoneyBundle\Tests\TestProxies');
+        $config->setProxyNamespace('Phil\MoneyBundle\Tests\TestProxies');
         $config->setAutoGenerateProxyClasses(true);
         //$config->setSQLLogger(new \Doctrine\DBAL\Logging\EchoSQLLogger());
 
@@ -40,7 +40,7 @@ class BundleOrmTestCase
         return EntityManager::create(
             array(
                 'driver' => 'pdo_sqlite',
-                'path' => "/tmp/sqlite-tbbc-money-test.db"
+                'path' => "/tmp/sqlite-phil-money-test.db"
             ),
             $config,
             $eventManager

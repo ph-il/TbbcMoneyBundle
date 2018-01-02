@@ -1,9 +1,9 @@
 <?php
-namespace Tbbc\MoneyBundle\Entity;
+namespace Phil\MoneyBundle\Entity;
 
 /**
  * Class RatioHistory
- * @package Tbbc\MoneyBundle\Entity
+ * @package Phil\MoneyBundle\Entity
  */
 class RatioHistory
 {

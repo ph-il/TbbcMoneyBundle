@@ -1,7 +1,7 @@
 <?php
-namespace Tbbc\MoneyBundle\Tests\Entity;
+namespace Phil\MoneyBundle\Tests\Entity;
 
-use Tbbc\MoneyBundle\Entity\DoctrineStorageRatio;
+use Phil\MoneyBundle\Entity\DoctrineStorageRatio;
 
 /**
  * @group manager
@@ -10,7 +10,7 @@ class DoctrineStorageRatioTest extends \PHPUnit_Framework_TestCase
 {
     public function testClassExists ()
     {
-        $this->assertTrue(class_exists('\Tbbc\MoneyBundle\Entity\DoctrineStorageRatio'));
+        $this->assertTrue(class_exists('\Phil\MoneyBundle\Entity\DoctrineStorageRatio'));
     }
 
     public function testConstructor ()

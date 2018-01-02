@@ -4,22 +4,22 @@
  * Date: 01/07/13
  */
 
-namespace Tbbc\MoneyBundle\Tests\Form\Type;
+namespace Phil\MoneyBundle\Tests\Form\Type;
 
 use Money\Currency;
 use Symfony\Component\Form\PreloadedExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
-use Tbbc\MoneyBundle\Form\Type\CurrencyType;
+use Phil\MoneyBundle\Form\Type\CurrencyType;
 
 class CurrencyTypeTest
     extends TypeTestCase
 {
-    private $currencyTypeClass = 'Tbbc\MoneyBundle\Form\Type\CurrencyType';
+    private $currencyTypeClass = 'Phil\MoneyBundle\Form\Type\CurrencyType';
 
     public function testBindValid()
     {
         $form = $this->factory->create($this->currencyTypeClass, null, array());
-        $form->submit(array("tbbc_name" => "EUR"));
+        $form->submit(array("phil_name" => "EUR"));
         $this->assertEquals(new Currency('EUR'), $form->getData());
     }
 
@@ -30,7 +30,7 @@ class CurrencyTypeTest
         $form->setData(new Currency("USD"));
         $formView = $form->createView();
 
-        $this->assertEquals("USD", $formView->children["tbbc_name"]->vars["value"]);
+        $this->assertEquals("USD", $formView->children["phil_name"]->vars["value"]);
     }
 
     protected function getExtensions()

@@ -1,9 +1,9 @@
 <?php
-namespace Tbbc\MoneyBundle\Twig\Extension;
+namespace Phil\MoneyBundle\Twig\Extension;
 
 use Money\Money;
-use Tbbc\MoneyBundle\Formatter\MoneyFormatter;
-use Tbbc\MoneyBundle\Pair\PairManagerInterface;
+use Phil\MoneyBundle\Formatter\MoneyFormatter;
+use Phil\MoneyBundle\Pair\PairManagerInterface;
 
 /**
  * @author Philippe Le Van <philippe.levan@kitpages.fr>
@@ -67,6 +67,6 @@ class MoneyExtension extends \Twig_Extension
      */
     public function getName()
     {
-        return 'tbbc_money_extension';
+        return 'phil_money_extension';
     }
 }

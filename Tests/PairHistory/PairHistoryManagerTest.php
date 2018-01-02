@@ -1,10 +1,10 @@
 <?php
-namespace Tbbc\MoneyBundle\Tests\PairHistory;
+namespace Phil\MoneyBundle\Tests\PairHistory;
 
-use Tbbc\MoneyBundle\MoneyException;
-use Tbbc\MoneyBundle\Pair\SaveRatioEvent;
-use Tbbc\MoneyBundle\PairHistory\PairHistoryManager;
-use Tbbc\MoneyBundle\Tests\BundleOrmTestCase;
+use Phil\MoneyBundle\MoneyException;
+use Phil\MoneyBundle\Pair\SaveRatioEvent;
+use Phil\MoneyBundle\PairHistory\PairHistoryManager;
+use Phil\MoneyBundle\Tests\BundleOrmTestCase;
 
 /**
  * @group historyManager
@@ -26,7 +26,7 @@ class PairHistoryManagerTest extends BundleOrmTestCase
             $em,
             'EUR'
         );
-        $this->ratioHistoryRepo = $em->getRepository('Tbbc\MoneyBundle\Entity\RatioHistory');
+        $this->ratioHistoryRepo = $em->getRepository('Phil\MoneyBundle\Entity\RatioHistory');
     }
 
     public function testSaveRatioHistory()

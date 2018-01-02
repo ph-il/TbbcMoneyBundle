@@ -1,15 +1,15 @@
 <?php
-namespace Tbbc\MoneyBundle\PairHistory;
+namespace Phil\MoneyBundle\PairHistory;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\NoResultException;
-use Tbbc\MoneyBundle\Entity\RatioHistory;
-use Tbbc\MoneyBundle\MoneyException;
-use Tbbc\MoneyBundle\Pair\SaveRatioEvent;
+use Phil\MoneyBundle\Entity\RatioHistory;
+use Phil\MoneyBundle\MoneyException;
+use Phil\MoneyBundle\Pair\SaveRatioEvent;
 
 /**
  * Class PairHistoryManager
- * @package Tbbc\MoneyBundle\PairHistory
+ * @package Phil\MoneyBundle\PairHistory
  */
 class PairHistoryManager implements PairHistoryManagerInterface
 {
@@ -46,7 +46,7 @@ class PairHistoryManager implements PairHistoryManagerInterface
 
         $qb = $this->em->createQueryBuilder();
         $qb->select('rh')
-            ->from('\Tbbc\MoneyBundle\Entity\RatioHistory', 'rh')
+            ->from('\Phil\MoneyBundle\Entity\RatioHistory', 'rh')
             ->where('rh.currencyCode = :currencyCode')
             ->orderBy('rh.savedAt', 'DESC')
             ->andWhere('rh.savedAt <= :historyDate')
@@ -74,7 +74,7 @@ class PairHistoryManager implements PairHistoryManagerInterface
     {
         $qb = $this->em->createQueryBuilder();
         $qb->select('rh')
-            ->from('\Tbbc\MoneyBundle\Entity\RatioHistory', 'rh')
+            ->from('\Phil\MoneyBundle\Entity\RatioHistory', 'rh')
             ->where('rh.currencyCode = :currencyCode')
             ->andWhere('rh.referenceCurrencyCode = :referenceCurrencyCode')
             ->orderBy('rh.savedAt', 'ASC')

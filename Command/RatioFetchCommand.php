@@ -1,15 +1,15 @@
 <?php
-namespace Tbbc\MoneyBundle\Command;
+namespace Phil\MoneyBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Tbbc\MoneyBundle\MoneyException;
-use Tbbc\MoneyBundle\Pair\PairManagerInterface;
+use Phil\MoneyBundle\MoneyException;
+use Phil\MoneyBundle\Pair\PairManagerInterface;
 
-/**
+/**Phil
  * Class RatioFetchCommand
- * @package Tbbc\MoneyBundle\Command
+ * @package Phil\MoneyBundle\Command
  */
 class RatioFetchCommand extends ContainerAwareCommand
 {
@@ -19,8 +19,8 @@ class RatioFetchCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('tbbc:money:ratio-fetch')
-            ->setHelp('The <info>tbbc:money:ratio-fetch</info> fetch all needed ratio from a external ratio provider')
+            ->setName('phil:money:ratio-fetch')
+            ->setHelp('The <info>phil:money:ratio-fetch</info> fetch all needed ratio from a external ratio provider')
             ->setDescription('fetch all needed ratio from a external ratio provider')
         ;
     }
@@ -34,7 +34,7 @@ class RatioFetchCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         /** @var PairManagerInterface $pairManager */
-        $pairManager = $this->getContainer()->get('tbbc_money.pair_manager');
+        $pairManager = $this->getContainer()->get('phil_money.pair_manager');
         try {
             $pairManager->saveRatioListFromRatioProvider();
             $output->writeln('ratio fetched from provider'.PHP_EOL.print_r($pairManager->getRatioList(), true));

@@ -1,11 +1,11 @@
 <?php
-namespace Tbbc\MoneyBundle\Pair\RatioProvider;
+namespace Phil\MoneyBundle\Pair\RatioProvider;
 
 use Money\Currencies\ISOCurrencies;
 use Money\Currency;
 use Symfony\Component\DomCrawler\Crawler;
-use Tbbc\MoneyBundle\MoneyException;
-use Tbbc\MoneyBundle\Pair\RatioProviderInterface;
+use Phil\MoneyBundle\MoneyException;
+use Phil\MoneyBundle\Pair\RatioProviderInterface;
 
 /**
  * GoogleRatioProvider

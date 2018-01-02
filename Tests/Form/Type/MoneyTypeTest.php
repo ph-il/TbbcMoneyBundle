@@ -4,13 +4,13 @@
  * Date: 01/07/13
  */
 
-namespace Tbbc\MoneyBundle\Tests\Form\Type;
+namespace Phil\MoneyBundle\Tests\Form\Type;
 
 use Money\Currency;
 use Symfony\Component\Form\PreloadedExtension;
 use Symfony\Component\Form\Test\FormIntegrationTestCase;
-use Tbbc\MoneyBundle\Form\Type\CurrencyType;
-use Tbbc\MoneyBundle\Form\Type\MoneyType;
+use Phil\MoneyBundle\Form\Type\CurrencyType;
+use Phil\MoneyBundle\Form\Type\MoneyType;
 use Symfony\Component\Form\Test\TypeTestCase;
 use Money\Money;
 
@@ -18,8 +18,8 @@ class MoneyTypeTest
     extends TypeTestCase
 {
 
-    private $currencyTypeClass = 'Tbbc\MoneyBundle\Form\Type\CurrencyType';
-    private $moneyTypeClass = 'Tbbc\MoneyBundle\Form\Type\MoneyType';
+    private $currencyTypeClass = 'Phil\MoneyBundle\Form\Type\CurrencyType';
+    private $moneyTypeClass = 'Phil\MoneyBundle\Form\Type\MoneyType';
 
     public function testBindValid()
     {
@@ -27,8 +27,8 @@ class MoneyTypeTest
             "currency_type" => $this->currencyTypeClass,
         ));
         $form->submit(array(
-            "tbbc_currency" => array("tbbc_name"=>'EUR'),
-            "tbbc_amount" => '12'
+            "phil_currency" => array("phil_name"=>'EUR'),
+            "phil_amount" => '12'
         ));
         $this->assertEquals(Money::EUR(1200), $form->getData());
     }
@@ -40,8 +40,8 @@ class MoneyTypeTest
             "currency_type" => $this->currencyTypeClass,
         ));
         $form->submit(array(
-            "tbbc_currency" => array("tbbc_name"=>'EUR'),
-            "tbbc_amount" => '12,5'
+            "phil_currency" => array("phil_name"=>'EUR'),
+            "phil_amount" => '12,5'
         ));
         $this->assertEquals(Money::EUR(1250), $form->getData());
     }
@@ -53,8 +53,8 @@ class MoneyTypeTest
             "currency_type" => $this->currencyTypeClass,
         ));
         $form->submit(array(
-            "tbbc_currency" => array("tbbc_name"=>'EUR'),
-            "tbbc_amount" => '1 252,5'
+            "phil_currency" => array("phil_name"=>'EUR'),
+            "phil_amount" => '1 252,5'
         ));
         $this->assertEquals(Money::EUR(125250), $form->getData());
     }
@@ -68,7 +68,7 @@ class MoneyTypeTest
         $form->setData(Money::EUR(120));
         $formView = $form->createView();
 
-        $this->assertEquals("1,20", $formView->children["tbbc_amount"]->vars["value"]);
+        $this->assertEquals("1,20", $formView->children["phil_amount"]->vars["value"]);
     }
 
     protected function getExtensions()
