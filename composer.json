@@ -1,11 +1,15 @@
 {
-    "name": "tbbc/money-bundle",
+    "name": "ph-il/money-bundle",
     "type": "symfony-bundle",
     "description": "This is a Symfony bundle that integrates moneyphp/money library (Fowler pattern): https://github.com/moneyphp/money.",
     "keywords": ["money", "currency", "fowler", "conversion"],
-    "homepage": "https://github.com/TheBigBrainsCompany/TbbcMoneyBundle",
+    "homepage": "https://github.com/ph-il/PhilMoneyBundle",
     "license": "MIT",
     "authors": [
+        {
+            "name": "Philippe Gamache",
+            "homepage": "https://twitter.com/philoupedia"
+        },
         {
             "name": "Philippe Le Van",
             "homepage": "https://twitter.com/plv"
@@ -44,10 +48,10 @@
         "doctrine/orm": "~2.3"
     },
     "autoload": {
-        "psr-0": { "Tbbc\\MoneyBundle": "" }
+        "psr-0": { "Phil\\MoneyBundle": "" }
     },
     "autoload-dev": {
         "classmap": [ "Tests/app/AppKernel.php" ]
     },
-    "target-dir": "Tbbc/MoneyBundle"
+    "target-dir": "Phil/MoneyBundle"
 }

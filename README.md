@@ -1,27 +1,29 @@
-TbbcMoneyBundle
+PhilMoneyBundle
 ===============
 
-[![Build Status](https://img.shields.io/travis/TheBigBrainsCompany/TbbcMoneyBundle/master.svg?style=flat-square)](https://travis-ci.org/TheBigBrainsCompany/TbbcMoneyBundle)
-[![PHP](https://img.shields.io/badge/php-%3E%3D%205.5-8892BF.svg?style=flat-square)]()
-[![Symfony](https://img.shields.io/badge/symfony-~2.8%7C~3.0-green.svg?style=flat-square)]()
-[![Downloads](https://img.shields.io/packagist/dt/tbbc/money-bundle.svg?style=flat-square)]()
-[![license](https://img.shields.io/github/license/TheBigBrainsCompany/TbbcMoneyBundle.svg?style=flat-square)]()
+[![Build Status](https://img.shields.io/travis/ph-il/PhilMoneyBundle/master.svg?style=flat-square)](https://travis-ci.org/ph-il/PhilMoneyBundle)
+[![PHP](https://img.shields.io/badge/php-%3E%3D%207.1-8892BF.svg?style=flat-square)]()
+[![Symfony](https://img.shields.io/badge/symfony-~4.0-green.svg?style=flat-square)]()
+[![Downloads](https://img.shields.io/packagist/dt/phil/money-bundle.svg?style=flat-square)]()
+[![license](https://img.shields.io/github/license/ph-il/PhilMoneyBundle.svg?style=flat-square)]()
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/cb69e820-135b-4906-93fd-7921ba46a6e6/big.png)](https://insight.sensiolabs.com/projects/cb69e820-135b-4906-93fd-7921ba46a6e6)
 
 This bundle is used to integrate the [Money library from mathiasverraes](https://github.com/mathiasverraes/money) into
 a Symfony project.
 
+This bundle is a fork of [PhilMoneyBundle](https://github.com/ph-il/PhilMoneyBundle)
+
 This library is based on Fowler's [Money pattern](http://blog.verraes.net/2011/04/fowler-money-pattern-in-php/)
 
-* This bundle is tested and is stable with Symfony 2.8 and Symfony 3.1 
+* This bundle is tested and is stable with Symfony 4.0
 
 Quick Start
 -----------
 
 ```php
 use Money\Money;
-use Tbbc\MoneyBundle\Form\Type\MoneyType;
+use Phil\MoneyBundle\Form\Type\MoneyType;
 
 // the money library
 $fiveEur = Money::EUR(500);
@@ -32,7 +34,7 @@ assert($part2->equals(Money::EUR(333)));
 assert($part3->equals(Money::EUR(333)));
 
 // a service that stores conversion ratios
-$pairManager = $this->get('tbbc_money.pair_manager');
+$pairManager = $this->get('phil_money.pair_manager');
 $usd = $pairManager->convert($tenEur, 'USD');
 
 // a form integration
@@ -67,7 +69,7 @@ Installation
 ------------
 
 Use [Composer](http://getcomposer.org/) and install with  
-`$ composer require tbbc/money-bundle`
+`$ composer require phil/money-bundle`
 
 Then add the bundle in AppKernel :
 
@@ -76,7 +78,7 @@ Then add the bundle in AppKernel :
     {
         $bundles = array(
             // ...
-            new Tbbc\MoneyBundle\TbbcMoneyBundle(),
+            new Phil\MoneyBundle\PhilMoneyBundle(),
         );
     }
 ```
@@ -84,7 +86,7 @@ Then add the bundle in AppKernel :
 In your config.yml, add the currencies you want to use and the reference currency.
 
 ```yaml
-tbbc_money:
+phil_money:
     currencies: ["USD", "EUR"]
     reference_currency: "EUR"
     decimals: 2
@@ -96,7 +98,7 @@ In your config.yml, add the form fields presentations
 twig:
     form:
         resources:
-            - 'TbbcMoneyBundle:Form:fields.html.twig'
+            - 'PhilMoneyBundle:Form:fields.html.twig'
 ```
 
 You should also register custom Doctrine Money type:
@@ -105,7 +107,7 @@ You should also register custom Doctrine Money type:
 doctrine:
     dbal:
         types:
-            money: Tbbc\MoneyBundle\Type\MoneyType
+            money: Phil\MoneyBundle\Type\MoneyType
 ```
 
 
@@ -131,7 +133,7 @@ $this->assertEquals(Money::USD(1250), $usd);
 
 ### Form integration
 
-You have 3 new form types (under Tbbc\MoneyBundle\Form\Type namespace):
+You have 3 new form types (under Phil\MoneyBundle\Form\Type namespace):
 
 * CurrencyType : asks for a currency among currencies defined in config.yml
 * MoneyType : asks for an amount and a currency
@@ -331,7 +333,7 @@ class TestMoney
 Convert an amount into another currency
 
 ```php
-$pairManager = $this->get("tbbc_money.pair_manager");
+$pairManager = $this->get("phil_money.pair_manager");
 $usd = $pairManager->convert($amount, 'USD');
 ```
 
@@ -340,7 +342,7 @@ Save a conversion value in a DB
 ```php
 use Money\Money;
 
-$pairManager = $this->get("tbbc_money.pair_manager");
+$pairManager = $this->get("phil_money.pair_manager");
 $pairManager->saveRatio('USD', 1.25); // save in ratio file in CSV
 $eur = Money::EUR(100);
 $usd = $pairManager->convert($amount, 'USD');
@@ -361,7 +363,7 @@ class IndexController extends Controller
 {
     public function myAction()
     {
-        $moneyFormatter = $this->get('tbbc_money.formatter.money_formatter');
+        $moneyFormatter = $this->get('phil_money.formatter.money_formatter');
         $price = new Money(123456789, new Currency('EUR'));
 
         // best method (added in 2.2+ version)
@@ -398,44 +400,44 @@ class IndexController extends Controller
 ### PHP templating integration
 
 ```php
-<span class="price"><?php echo $view['tbbc_money']->format($price) ?></span>
-<span class="money"><?php echo $view['tbbc_money_currency']->formatCurrencyAsSymbol($price->getCurrency()) ?></span>
+<span class="price"><?php echo $view['phil_money']->format($price) ?></span>
+<span class="money"><?php echo $view['phil_money_currency']->formatCurrencyAsSymbol($price->getCurrency()) ?></span>
 ```
 
 ### Fetching ratio values from remote provider
 
 ```bash
 # save a ratio in the storage
-./bin/console tbbc:money:ratio-save USD 1.25
+./bin/console phil:money:ratio-save USD 1.25
 
 # display ratio list
-./bin/console tbbc:money:ratio-list
+./bin/console phil:money:ratio-list
 
 # fetch all the ratio for all defined currencies from an external API
-./bin/console tbbc:money:ratio-fetch
+./bin/console phil:money:ratio-fetch
 ```
 
 ### Change the ratio provider
 
-The ratio provider by default is base on the service 'tbbc_money.ratio_provider.yahoo_finance'
+The ratio provider by default is base on the service 'phil_money.ratio_provider.yahoo_finance'
 
 This bundles contains two ratio providers :
 
-* tbbc_money.ratio_provider.yahoo_finance based on the Yahoo finance APIs https://developer.yahoo.com/
-* tbbc_money.ratio_provider.google based on the https://www.google.com/finance/converter service
+* phil_money.ratio_provider.yahoo_finance based on the Yahoo finance APIs https://developer.yahoo.com/
+* phil_money.ratio_provider.google based on the https://www.google.com/finance/converter service
 
 You can change the service to use in the config.yml file :
 
 ```
-tbbc_money:
+phil_money:
     [...]
-    ratio_provider: tbbc_money.ratio_provider.google
+    ratio_provider: phil_money.ratio_provider.google
 ```
 
 
 ### Create your own ratio provider
 
-A ratio provider is a service that implements the `Tbbc\MoneyBundle\Pair\RatioProviderInterface`.
+A ratio provider is a service that implements the `Phil\MoneyBundle\Pair\RatioProviderInterface`.
 I recommend that you read the PHP doc of the interface to understand how to implement a new ratio provider.
 
 The new ratio provider has to be registered as a service.
@@ -444,9 +446,9 @@ To use the new ratio provider, you should set the service to use in the config.y
 service name.
 
 ```
-tbbc_money:
+phil_money:
     [...]
-    ratio_provider: tbbc_money.ratio_provider.google
+    ratio_provider: phil_money.ratio_provider.google
 ```
 
 
@@ -456,7 +458,7 @@ tbbc_money:
 Add to your crontab :
 
 ```
-1 0 * * * /my_app_dir/bin/console tbbc:money:ratio-fetch > /dev/null
+1 0 * * * /my_app_dir/bin/console phil:money:ratio-fetch > /dev/null
 ```
 
 ### MoneyManager : create a money object from a float
@@ -465,7 +467,7 @@ Create a money object from a float can be a bit tricky because of rounding issue
 
 ```php
 <?php
-$moneyManager = $this->get("tbbc_money.money_manager");
+$moneyManager = $this->get("phil_money.money_manager");
 $money = $moneyManager->createMoneyFromFloat('2.5', 'USD');
 $this->assertEquals("USD", $money->getCurrency()->getCode());
 $this->assertEquals(250, $money->getAmount());
@@ -478,7 +480,7 @@ Doctrine is required to use this feature.
 In order to get the ratio history, you have to enable it in the configuration and to use Doctrine.
 
 ```yaml
-tbbc_money:
+phil_money:
     currencies: ["USD", "EUR"]
     reference_currency: "EUR"
     enable_pair_history: true
@@ -487,7 +489,7 @@ tbbc_money:
 Then you can use the service :
 
 ```php
-$pairHistoryManager = $this->get("tbbc_money.pair_history_manager");
+$pairHistoryManager = $this->get("phil_money.pair_history_manager");
 $dt = new \DateTime("2012-07-08 11:14:15.638276");
 
 // returns ratio for at a given date
@@ -501,12 +503,12 @@ RatioStorage
 ------------
 
 Two storages for storing ratios are available : CSV File, or Doctrine
-By default, TbbcMoneyBundle is configured with CSV File.
+By default, PhilMoneyBundle is configured with CSV File.
 
 If you want to switch to a Doctrine storage, edit your **config.yml**
 
 ```yaml
-tbbc_money:
+phil_money:
     storage: doctrine
 ```
 
@@ -515,12 +517,12 @@ Update your database schema :
 ./bin/console doctrine:schema:update --force
 ```
 
-With the Doctrine storage, currency ratio will use the default entity manager and will store data inside the **tbbc_money_doctrine_storage_ratios**
+With the Doctrine storage, currency ratio will use the default entity manager and will store data inside the **phil_money_doctrine_storage_ratios**
 
 Custom NumberFormatter in MoneyFormatter
 ----------------------------------------
 
-The MoneyFormatter::localizedFormatMoney ( service 'tbbc_money.formatter.money_formatter' ) use
+The MoneyFormatter::localizedFormatMoney ( service 'phil_money.formatter.money_formatter' ) use
 the php NumberFormatter class ( http://www.php.net/manual/en/numberformatter.formatcurrency.php )
 to format money.
 
@@ -530,13 +532,13 @@ You can :
 * subclass the MoneyFormatter and rewrite the getDefaultNumberFormater method to set a application wide
 NumberFormatter
 
-Using the TbbcMoneyBundle without Doctrine
+Using the PhilMoneyBundle without Doctrine
 ------------------------------------------
 
-You have to disable the pair history service in order to use the TbbcMoneyBundle without Doctrine.
+You have to disable the pair history service in order to use the PhilMoneyBundle without Doctrine.
 
 ```
-tbbc_money:
+phil_money:
     enable_pair_history: true
 ```
 
@@ -552,12 +554,12 @@ In your config.yml, you can :
 * define the decimals count after a unit (ex : 12.25€ : 2 decimals ; 11.5678€ : 4 decimals)
 
 ```yaml
-tbbc_money:
+phil_money:
     currencies: ["USD", "EUR"]
     reference_currency: "EUR"
     decimals: 2
     enable_pair_history: true
-    ratio_provider: tbbc_money.ratio_provider.yahoo_finance
+    ratio_provider: phil_money.ratio_provider.yahoo_finance
 ```
 
 Note about older versions
@@ -565,13 +567,13 @@ Note about older versions
 
 - Examples above use Symfony 3 syntax for the console (`./bin/console`), for version 2.8 you should use `./app/console` instead.
 - "class" constant (e.g. `MoneyType::class`) is only supported since PHP 5.5, if you have an older version, you should use the full 
-class name instead (e.g. `Tbbc\MoneyBundle\Type\MoneyType`)
+class name instead (e.g. `Phil\MoneyBundle\Type\MoneyType`)
 
 
 Contributing
 ------------
 
-1. Take a look at the [list of issues](https://github.com/TheBigBrainsCompany/TbbcMoneyBundle/issues).
+1. Take a look at the [list of issues](https://github.com/ph-il/PhilMoneyBundle/issues).
 2. Fork
 3. Write a test (for either new feature or bug)
 4. Make a PR
@@ -579,11 +581,13 @@ Contributing
 Requirements
 ------------
 
-* PHP 5.3.9+
-* Symfony 2.8+
+* PHP 7.1+
+* Symfony 4.0+
 
 Authors
 -------
+
+Philippe Gamache - [ph-il.ca](http://ph-il.ca) - twitter : @philoupedia  
 
 Philippe Le Van - [kitpages.fr](http://www.kitpages.fr) - twitter : @plv  
 Thomas Tourlourat - [Wozbe](http://wozbe.com) - twitter: @armetiz  
