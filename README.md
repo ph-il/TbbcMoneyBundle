@@ -562,14 +562,6 @@ phil_money:
     ratio_provider: phil_money.ratio_provider.yahoo_finance
 ```
 
-Note about older versions
--------------------------
-
-- Examples above use Symfony 3 syntax for the console (`./bin/console`), for version 2.8 you should use `./app/console` instead.
-- "class" constant (e.g. `MoneyType::class`) is only supported since PHP 5.5, if you have an older version, you should use the full 
-class name instead (e.g. `Phil\MoneyBundle\Type\MoneyType`)
-
-
 Contributing
 ------------
 
