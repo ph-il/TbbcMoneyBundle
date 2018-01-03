@@ -7,7 +7,7 @@ PhilMoneyBundle
 [![Downloads](https://img.shields.io/packagist/dt/phil/money-bundle.svg?style=flat-square)]()
 [![license](https://img.shields.io/github/license/ph-il/PhilMoneyBundle.svg?style=flat-square)]()
 
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/cb69e820-135b-4906-93fd-7921ba46a6e6/big.png)](https://insight.sensiolabs.com/projects/cb69e820-135b-4906-93fd-7921ba46a6e6)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/17411b4e-b4be-4677-981f-937f39c18bd6/big.png)](https://insight.sensiolabs.com/projects/17411b4e-b4be-4677-981f-937f39c18bd6)
 
 This bundle is used to integrate the [Money library from mathiasverraes](https://github.com/mathiasverraes/money) into
 a Symfony project.
