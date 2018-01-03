@@ -7,7 +7,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Phil\MoneyBundle\MoneyException;
 use Phil\MoneyBundle\Pair\PairManagerInterface;
 
-/**Phil
+/**
  * Class RatioFetchCommand
  * @package Phil\MoneyBundle\Command
  */
