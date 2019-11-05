@@ -12,7 +12,7 @@ PhilMoneyBundle
 This bundle is used to integrate the [Money library from mathiasverraes](https://github.com/mathiasverraes/money) into
 a Symfony project.
 
-This bundle is a fork of [PhilMoneyBundle](https://github.com/ph-il/PhilMoneyBundle)
+This bundle is a fork of [TbbcMoneyBundle](https://github.com/TheBigBrainsCompany/TbbcMoneyBundle)
 
 This library is based on Fowler's [Money pattern](http://blog.verraes.net/2011/04/fowler-money-pattern-in-php/)
 
